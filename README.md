@@ -27,7 +27,7 @@ This game is a personal birthday surprise with classic Snake gameplay and custom
 1. Install dependencies:
    - `pip install pygame`
 2. Run:
-   - `python random/test.py`
+   - `python game.py`
 
 ## Controls
 - In menu:
