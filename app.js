@@ -14,8 +14,6 @@ const targetScore = 20;
 const gridCols = 12;
 const gridRows = 20;
 const logicStepMs = 170;
-const catRenderScale = 2.32;
-const mouseRenderScale = 1.64;
 
 const catImg = new Image();
 catImg.src = "./assets/pink_cat.png";
@@ -185,6 +183,9 @@ function drawGame(alpha) {
   drawBoard();
   const cellW = canvas.width / gridCols;
   const cellH = canvas.height / gridRows;
+  const isMobile = window.matchMedia("(pointer: coarse)").matches || window.innerWidth <= 768;
+  const catRenderScale = isMobile ? 1.75 : 1.08;
+  const mouseRenderScale = isMobile ? 1.2 : 0.78;
 
   const mousePx = toPixels(food);
   const mouseW = cellW * mouseRenderScale;
