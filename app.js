@@ -36,7 +36,7 @@ const swipeThreshold = 8;
 function showScreen(state) {
   gameState = state;
   menuScreen.classList.toggle("active", state === "menu");
-  gameScreen.classList.toggle("active", state === "game");
+  gameScreen.classList.toggle("active", state === "game" || state === "end");
   endScreen.classList.toggle("active", state === "end");
 }
 

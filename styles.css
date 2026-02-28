@@ -30,6 +30,7 @@ html, body {
   align-items: center;
   justify-content: center;
   padding: 16px;
+  position: relative;
 }
 
 .screen {
@@ -40,6 +41,22 @@ html, body {
 
 .screen.active {
   display: block;
+}
+
+#gameScreen.active {
+  position: relative;
+  z-index: 1;
+}
+
+#endScreen.active {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 244, 251, 0.45);
 }
 
 .title {
