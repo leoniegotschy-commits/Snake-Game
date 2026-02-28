@@ -14,6 +14,8 @@ const targetScore = 20;
 const gridCols = 12;
 const gridRows = 20;
 const logicStepMs = 170;
+const catRenderScale = 1.16;
+const mouseRenderScale = 0.82;
 
 const catImg = new Image();
 catImg.src = "./assets/pink_cat.png";
@@ -185,13 +187,15 @@ function drawGame(alpha) {
   const cellH = canvas.height / gridRows;
 
   const mousePx = toPixels(food);
-  const mouseW = cellW * 0.6;
-  const mouseH = cellH * 0.6;
+  const mouseW = cellW * mouseRenderScale;
+  const mouseH = cellH * mouseRenderScale;
+  const mouseOffsetX = (cellW - mouseW) * 0.5;
+  const mouseOffsetY = (cellH - mouseH) * 0.5;
   if (mouseImg.complete) {
-    ctx.drawImage(mouseImg, mousePx.x + cellW * 0.2, mousePx.y + cellH * 0.2, mouseW, mouseH);
+    ctx.drawImage(mouseImg, mousePx.x + mouseOffsetX, mousePx.y + mouseOffsetY, mouseW, mouseH);
   } else {
     ctx.fillStyle = "#ff69b4";
-    ctx.fillRect(mousePx.x + cellW * 0.2, mousePx.y + cellH * 0.2, mouseW, mouseH);
+    ctx.fillRect(mousePx.x + mouseOffsetX, mousePx.y + mouseOffsetY, mouseW, mouseH);
   }
 
   for (let i = 0; i < snake.length; i += 1) {
@@ -199,13 +203,17 @@ function drawGame(alpha) {
     const previous = prevSnake[i] || snake[Math.max(0, i - 1)] || current;
     const x = previous.x + (current.x - previous.x) * alpha;
     const y = previous.y + (current.y - previous.y) * alpha;
-    const px = x * cellW;
-    const py = y * cellH;
+    const catW = cellW * catRenderScale;
+    const catH = cellH * catRenderScale;
+    const catOffsetX = (cellW - catW) * 0.5;
+    const catOffsetY = (cellH - catH) * 0.5;
+    const px = x * cellW + catOffsetX;
+    const py = y * cellH + catOffsetY;
     if (catImg.complete) {
-      ctx.drawImage(catImg, px, py, cellW, cellH);
+      ctx.drawImage(catImg, px, py, catW, catH);
     } else {
       ctx.fillStyle = "#ff99cc";
-      ctx.fillRect(px, py, cellW, cellH);
+      ctx.fillRect(px, py, catW, catH);
     }
   }
 }
