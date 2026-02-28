@@ -52,10 +52,15 @@ function saveHighscore() {
 
 function fitCanvas() {
   const maxWidth = Math.min(window.innerWidth - 28, 460);
-  const maxHeight = Math.min(window.innerHeight * 0.72, 780);
-  const cellByWidth = Math.floor(maxWidth / gridCols);
-  const cellByHeight = Math.floor(maxHeight / gridRows);
-  const cell = Math.max(18, Math.min(cellByWidth, cellByHeight));
+  const maxHeight = Math.min(window.innerHeight * 0.82, 780);
+  const boardRatio = gridRows / gridCols;
+  let boardWidth = maxWidth;
+  let boardHeight = boardWidth * boardRatio;
+  if (boardHeight > maxHeight) {
+    boardHeight = maxHeight;
+    boardWidth = boardHeight / boardRatio;
+  }
+  const cell = Math.max(16, Math.floor(boardWidth / gridCols));
   canvas.width = cell * gridCols;
   canvas.height = cell * gridRows;
 }
@@ -277,16 +282,6 @@ canvas.addEventListener("touchend", (e) => {
   else setDir(0, dy > 0 ? 1 : -1);
   touchStart = null;
 }, { passive: true });
-
-document.querySelectorAll(".controls button").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const d = btn.dataset.dir;
-    if (d === "up") setDir(0, -1);
-    if (d === "down") setDir(0, 1);
-    if (d === "left") setDir(-1, 0);
-    if (d === "right") setDir(1, 0);
-  });
-});
 
 window.addEventListener("keydown", (e) => {
   if (e.key === "ArrowUp") setDir(0, -1);

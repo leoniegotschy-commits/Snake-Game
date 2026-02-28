@@ -25,7 +25,7 @@ This game is a personal birthday surprise with classic Snake gameplay and custom
 
 ## Quick Run (Phone/Web)
 1. Open `index.html` in a browser, or host this repo with GitHub Pages.
-2. On phone, use swipe gestures on the game area or the on-screen arrow buttons.
+2. On phone, use swipe gestures on the game area.
 
 ## Share It As A Link (Recommended)
 Use GitHub Pages so your friend can open it on Android/iPhone without installing anything:
@@ -45,7 +45,7 @@ Use GitHub Pages so your friend can open it on Android/iPhone without installing
 
 ## Controls
 - Web version:
-  - Swipe on canvas or use on-screen arrow buttons
+  - Swipe on canvas
   - Keyboard arrows also work on desktop browser
 - Python version in menu:
   - Mouse click `Start Game` or press `Enter`/`Space`
