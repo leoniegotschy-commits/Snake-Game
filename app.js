@@ -31,6 +31,7 @@ let score = 0;
 let accumulator = 0;
 let lastTime = 0;
 let confetti = [];
+const swipeThreshold = 8;
 
 function showScreen(state) {
   gameState = state;
@@ -265,22 +266,49 @@ function renderLoop(ts) {
 }
 
 let touchStart = null;
+let touchLast = null;
+
+function handleSwipeDelta(dx, dy) {
+  const absX = Math.abs(dx);
+  const absY = Math.abs(dy);
+  if (Math.max(absX, absY) < swipeThreshold) return false;
+  if (absX > absY) setDir(dx > 0 ? 1 : -1, 0);
+  else setDir(0, dy > 0 ? 1 : -1);
+  return true;
+}
+
 canvas.addEventListener("touchstart", (e) => {
+  if (gameState === "game") e.preventDefault();
   const t = e.changedTouches[0];
   touchStart = { x: t.clientX, y: t.clientY };
-}, { passive: true });
+  touchLast = { x: t.clientX, y: t.clientY };
+}, { passive: false });
+
+canvas.addEventListener("touchmove", (e) => {
+  if (!touchLast) return;
+  if (gameState === "game") e.preventDefault();
+  const t = e.changedTouches[0];
+  const dx = t.clientX - touchLast.x;
+  const dy = t.clientY - touchLast.y;
+  if (handleSwipeDelta(dx, dy)) {
+    touchLast = { x: t.clientX, y: t.clientY };
+  }
+}, { passive: false });
 
 canvas.addEventListener("touchend", (e) => {
   if (!touchStart) return;
+  if (gameState === "game") e.preventDefault();
   const t = e.changedTouches[0];
   const dx = t.clientX - touchStart.x;
   const dy = t.clientY - touchStart.y;
-  const absX = Math.abs(dx);
-  const absY = Math.abs(dy);
-  if (Math.max(absX, absY) < 18) return;
-  if (absX > absY) setDir(dx > 0 ? 1 : -1, 0);
-  else setDir(0, dy > 0 ? 1 : -1);
+  handleSwipeDelta(dx, dy);
   touchStart = null;
+  touchLast = null;
+}, { passive: false });
+
+canvas.addEventListener("touchcancel", () => {
+  touchStart = null;
+  touchLast = null;
 }, { passive: true });
 
 window.addEventListener("keydown", (e) => {
