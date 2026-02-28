@@ -14,8 +14,8 @@ const targetScore = 20;
 const gridCols = 12;
 const gridRows = 20;
 const logicStepMs = 170;
-const catRenderScale = 1.16;
-const mouseRenderScale = 0.82;
+const catRenderScale = 2.32;
+const mouseRenderScale = 1.64;
 
 const catImg = new Image();
 catImg.src = "./assets/pink_cat.png";
