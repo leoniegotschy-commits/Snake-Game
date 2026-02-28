@@ -1,0 +1,118 @@
+:root {
+  --pink: #ff69b4;
+  --pink-dark: #ff1493;
+  --soft: #fff4fb;
+  --edge: #ffd2e7;
+  --text: #c21875;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Trebuchet MS", "Comic Sans MS", sans-serif;
+  background: radial-gradient(ellipse at center, var(--soft) 0%, #ffeef8 60%, var(--edge) 100%);
+  color: var(--text);
+  touch-action: manipulation;
+}
+
+.app {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.screen {
+  width: min(460px, 100%);
+  display: none;
+  text-align: center;
+}
+
+.screen.active {
+  display: block;
+}
+
+.title {
+  font-size: clamp(2rem, 7vw, 2.8rem);
+  margin: 10px 0 24px;
+}
+
+.start-btn {
+  border: 3px solid var(--pink);
+  background: #ffd8eb;
+  color: var(--pink-dark);
+  border-radius: 16px;
+  padding: 14px 22px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.menu-info {
+  margin-top: 18px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.hint {
+  color: #d85a9f;
+  margin-top: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+#gameCanvas {
+  width: 100%;
+  max-height: 72vh;
+  border-radius: 14px;
+  border: 3px solid #ffb6d9;
+  background: radial-gradient(ellipse at center, var(--soft) 0%, #ffeef8 60%, var(--edge) 100%);
+}
+
+.controls {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.controls .row {
+  display: flex;
+  gap: 10px;
+}
+
+.controls button {
+  width: 64px;
+  height: 54px;
+  border-radius: 12px;
+  border: 2px solid #ff9ecf;
+  background: #ffe1f0;
+  color: #d21479;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+#endTitle {
+  font-size: clamp(1.6rem, 6vw, 2.8rem);
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+#endSub {
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+}

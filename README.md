@@ -23,19 +23,36 @@ This game is a personal birthday surprise with classic Snake gameplay and custom
   - text: `Happy 20th Birthday Mia Maus`
   - animated pink confetti
 
-## Quick Run
+## Quick Run (Phone/Web)
+1. Open `index.html` in a browser, or host this repo with GitHub Pages.
+2. On phone, use swipe gestures on the game area or the on-screen arrow buttons.
+
+## Share It As A Link (Recommended)
+Use GitHub Pages so your friend can open it on Android/iPhone without installing anything:
+1. Push this repo to GitHub.
+2. In GitHub repo settings, go to `Pages`.
+3. Set source to `Deploy from a branch`.
+4. Select branch `main` and folder `/ (root)`.
+5. Save and wait ~1 minute.
+6. Share the generated URL:
+   - `https://<your-username>.github.io/Snake-Game/`
+
+## Desktop Python Run
 1. Install dependencies:
    - `pip install pygame`
 2. Run:
    - `python game.py`
 
 ## Controls
-- In menu:
+- Web version:
+  - Swipe on canvas or use on-screen arrow buttons
+  - Keyboard arrows also work on desktop browser
+- Python version in menu:
   - Mouse click `Start Game` or press `Enter`/`Space`
   - `Q` to quit
-- In game:
+- Python version in game:
   - Arrow keys to move
-- In lose/win screens:
+- Python version in lose/win screens:
   - `C` to return/start a new round
   - `Q` to quit
 
